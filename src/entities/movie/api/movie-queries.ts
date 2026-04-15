@@ -16,13 +16,28 @@ import {
   movieVideosResponseSchema,
   paginatedMoviesSchema,
 } from "../lib/movie-schemas";
-import type { DiscoveryFilters, Genre, MovieCreditsPerson, MovieDetails, MovieVideo, PaginatedMovies } from "../model/movie-types";
+import type {
+  DiscoveryFilters,
+  Genre,
+  MovieCreditsPerson,
+  MovieDetails,
+  MovieVideo,
+  PaginatedMovies,
+} from "../model/movie-types";
 
 export const movieQueryKeys = {
   all: ["movies"] as const,
   genres: () => [...movieQueryKeys.all, "genres"] as const,
   discover: (filters: DiscoveryFilters) =>
-    [...movieQueryKeys.all, "discover", filters] as const,
+    [
+      ...movieQueryKeys.all,
+      "discover",
+      filters.page,
+      filters.query,
+      filters.genreId ?? null,
+      filters.primaryReleaseYear ?? null,
+      filters.minVoteAverage ?? null,
+    ] as const,
   details: (id: number) => [...movieQueryKeys.all, "details", id] as const,
   credits: (id: number) => [...movieQueryKeys.all, "credits", id] as const,
   videos: (id: number) => [...movieQueryKeys.all, "videos", id] as const,

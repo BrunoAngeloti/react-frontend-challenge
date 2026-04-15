@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type AuthUser = {
   email: string;
@@ -10,8 +10,10 @@ type AuthState = {
   token: string | null;
   user: AuthUser | null;
   isAuthenticated: boolean;
+  hasHydrated: boolean;
   login: (payload: { token: string; user: AuthUser }) => void;
   logout: () => void;
+  setHasHydrated: (value: boolean) => void;
 };
 
 export const useAuthStore = create<AuthState>()(
@@ -20,6 +22,7 @@ export const useAuthStore = create<AuthState>()(
       token: null,
       user: null,
       isAuthenticated: false,
+      hasHydrated: false,
       login: ({ token, user }) =>
         set({
           token,
@@ -32,6 +35,7 @@ export const useAuthStore = create<AuthState>()(
           user: null,
           isAuthenticated: false,
         }),
+      setHasHydrated: (value) => set({ hasHydrated: value }),
     }),
     {
       name: "cinedash-auth",
@@ -41,6 +45,9 @@ export const useAuthStore = create<AuthState>()(
         user: state.user,
         isAuthenticated: state.isAuthenticated,
       }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     },
   ),
 );

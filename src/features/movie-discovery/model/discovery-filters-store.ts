@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type DiscoveryFiltersState = {
   query: string;
@@ -38,6 +38,13 @@ export const useDiscoveryFiltersStore = create<DiscoveryFiltersState>()(
     {
       name: "cinedash-discovery-filters",
       storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        query: state.query,
+        genreId: state.genreId,
+        primaryReleaseYear: state.primaryReleaseYear,
+        minVoteAverage: state.minVoteAverage,
+        page: state.page,
+      }),
     },
   ),
 );
