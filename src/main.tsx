@@ -7,8 +7,6 @@ import { AppProvider } from "@/app/providers/app-provider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <AppProvider />
   </StrictMode>,
 );
