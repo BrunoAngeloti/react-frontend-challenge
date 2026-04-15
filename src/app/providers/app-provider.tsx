@@ -1,12 +1,10 @@
-import type { PropsWithChildren } from "react";
-import { QueryProvider } from "./query-provider";
 import { AppRouterProvider } from "./router-provider";
+import { QueryProvider } from "./query-provider";
 
-export function AppProvider({ children }: PropsWithChildren) {
+export function AppProvider() {
   return (
     <QueryProvider>
       <AppRouterProvider />
-      {children}
     </QueryProvider>
   );
 }

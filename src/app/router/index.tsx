@@ -1,15 +1,15 @@
 import {
-  createRouter,
+  Outlet,
   createRootRoute,
   createRoute,
-  Outlet,
+  createRouter,
 } from "@tanstack/react-router";
 
-import { LoginPage } from "@/pages/login";
 import { DashboardPage } from "@/pages/dashboard";
-import { WatchlistPage } from "@/pages/watchlist";
+import { LoginPage } from "@/pages/login";
 import { MovieDetailsPage } from "@/pages/movie-details";
 import { NotFoundPage } from "@/pages/not-found";
+import { WatchlistPage } from "@/pages/watchlist";
 import { ProtectedLayout } from "@/widgets/app-shell/protected-layout";
 
 const rootRoute = createRootRoute({
@@ -48,14 +48,16 @@ const movieRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([
   loginRoute,
-  protectedRoute.addChildren([
-    dashboardRoute,
-    watchlistRoute,
-    movieRoute,
-  ]),
+  protectedRoute.addChildren([dashboardRoute, watchlistRoute, movieRoute]),
 ]);
 
 export const router = createRouter({
   routeTree,
   defaultNotFoundComponent: NotFoundPage,
 });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
