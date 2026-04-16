@@ -54,29 +54,41 @@ export function DashboardPage() {
         <>
           <MovieGrid movies={data.results} genres={genres} />
 
-          <div className="flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3">
-            <div className="text-sm text-zinc-500 dark:text-zinc-400">
-              Página <span className="font-medium text-white">{data.page}</span> de{" "}
-              <span className="font-medium text-white">{data.totalPages}</span>
+          <div className="flex flex-col gap-4 rounded-3xl border border-zinc-200/80 bg-white/80 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900/80 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Página{" "}
+                <span className="font-semibold text-zinc-950 dark:text-zinc-50">
+                  {data.page}
+                </span>{" "}
+                de{" "}
+                <span className="font-semibold text-zinc-950 dark:text-zinc-50">
+                  {data.totalPages}
+                </span>
+              </p>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
               <Button
                 variant="outline"
+                size="sm"
                 onClick={() => setPage(Math.max(1, filters.page - 1))}
                 disabled={filters.page === 1}
+                className="rounded-xl"
               >
-                Anterior
+                ← Anterior
               </Button>
 
               <Button
                 variant="outline"
+                size="sm"
                 onClick={() =>
                   setPage(Math.min(data.totalPages, filters.page + 1))
                 }
                 disabled={filters.page >= data.totalPages}
+                className="rounded-xl"
               >
-                Próxima
+                Próxima →
               </Button>
             </div>
           </div>

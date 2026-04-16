@@ -25,7 +25,7 @@ export function WatchlistToggleButton({
     <Button
       variant={isInWatchlist ? "outline" : "default"}
       onClick={handleToggle}
-      className={fullWidth ? "w-full" : undefined}
+      className={fullWidth ? "w-full rounded-xl cursor-pointer" : undefined}
     >
       {isInWatchlist ? "Remover da watchlist" : "Adicionar à watchlist"}
     </Button>
