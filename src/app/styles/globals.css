@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html.dark body {
+  @apply bg-zinc-950 text-zinc-50;
+}
+
+html.light body {
+  @apply bg-zinc-100 text-zinc-950;
+}
+
+body {
+  @apply antialiased;
+  font-family:
+    Inter,
+    Geist,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
