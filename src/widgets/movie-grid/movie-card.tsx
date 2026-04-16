@@ -4,6 +4,7 @@ import type { Genre, Movie } from "@/entities/movie/model/movie-types";
 import { getImageUrl } from "@/entities/movie/lib/movie-mappers";
 import { Button } from "@/components/ui/button";
 import { formatRating, formatYear } from "@/shared/lib/format";
+import { WatchlistToggleButton } from "@/features/watchlist/ui/watchlist-toggle-button";
 
 type MovieCardProps = {
   movie: Movie;
@@ -54,11 +55,15 @@ export function MovieCard({ movie, genres }: MovieCardProps) {
           {movie.overview || "Sem sinopse disponível."}
         </p>
 
-        <Button asChild className="w-full">
-          <Link to="/movie/$id" params={{ id: String(movie.id) }}>
-            Ver detalhes
-          </Link>
-        </Button>
+        <div className="flex flex-col gap-2">
+          <WatchlistToggleButton movie={movie} fullWidth />
+
+          <Button asChild variant="outline" className="w-full">
+            <Link to="/movie/$id" params={{ id: String(movie.id) }}>
+              Ver detalhes
+            </Link>
+          </Button>
+        </div>
       </div>
     </article>
   );

@@ -2,6 +2,7 @@ import { Link, Navigate, Outlet, useNavigate } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/features/auth/model/auth-store";
+import { useWatchlistStore } from "@/features/watchlist/model/watchlist-store";
 
 export function ProtectedLayout() {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ export function ProtectedLayout() {
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  const watchlistCount = useWatchlistStore((state) => state.items.length);
 
   function handleLogout() {
     logout();
@@ -50,7 +52,7 @@ export function ProtectedLayout() {
               to="/watchlist"
               className="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
             >
-              Watchlist
+              Watchlist ({watchlistCount})
             </Link>
 
             <Button variant="outline" onClick={handleLogout}>
