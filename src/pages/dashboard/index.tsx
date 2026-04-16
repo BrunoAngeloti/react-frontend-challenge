@@ -24,7 +24,7 @@ export function DashboardPage() {
         description="Explore filmes populares, refine a busca com filtros e navegue pelos detalhes."
         actions={
           isFetching && !isLoading ? (
-            <span className="text-sm text-zinc-400">Atualizando resultados...</span>
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">Atualizando resultados...</span>
           ) : null
         }
       />
@@ -40,11 +40,11 @@ export function DashboardPage() {
       ) : null}
 
       {!isLoading && !isError && data?.results.length === 0 ? (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8 text-center">
+        <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white p-8 text-center dark:border-zinc-200 dark:border-zinc-700 dark:bg-white dark:bg-zinc-900">
           <h3 className="text-lg font-semibold text-white">
             Nenhum filme encontrado
           </h3>
-          <p className="mt-2 text-sm text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
             Tente ajustar sua busca ou limpar os filtros.
           </p>
         </div>
@@ -54,8 +54,8 @@ export function DashboardPage() {
         <>
           <MovieGrid movies={data.results} genres={genres} />
 
-          <div className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900 px-4 py-3">
-            <div className="text-sm text-zinc-400">
+          <div className="flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3">
+            <div className="text-sm text-zinc-500 dark:text-zinc-400">
               Página <span className="font-medium text-white">{data.page}</span> de{" "}
               <span className="font-medium text-white">{data.totalPages}</span>
             </div>

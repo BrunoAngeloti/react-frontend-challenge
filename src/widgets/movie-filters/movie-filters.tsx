@@ -39,7 +39,7 @@ export function MovieFilters() {
   }, []);
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
+    <section className="rounded-2xl border border-zinc-200 dark:border-zinc-700 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-5">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="space-y-2">
           <label className="text-sm font-medium text-zinc-200">Buscar filme</label>

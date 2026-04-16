@@ -25,11 +25,11 @@ export function WatchlistPage() {
       />
 
       {items.length === 0 ? (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-10 text-center">
+        <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-10 text-center">
           <h3 className="text-lg font-semibold text-white">
             Sua watchlist está vazia
           </h3>
-          <p className="mt-2 text-sm text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
             Adicione filmes a partir do dashboard ou da página de detalhes.
           </p>
         </div>

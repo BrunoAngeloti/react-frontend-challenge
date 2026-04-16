@@ -19,7 +19,7 @@ export function MovieDetailsPage() {
   const { data: videos } = useMovieVideosQuery(movieId);
 
   if (isMovieLoading) {
-    return <p className="text-zinc-400">Carregando detalhes...</p>;
+    return <p className="text-zinc-500 dark:text-zinc-400">Carregando detalhes...</p>;
   }
 
   if (!movie) {
@@ -49,7 +49,7 @@ export function MovieDetailsPage() {
   return (
     <section className="space-y-8">
       <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
           <div className="aspect-[2/3] bg-zinc-800">
             {movie.posterPath ? (
               <img
@@ -72,7 +72,7 @@ export function MovieDetailsPage() {
             </h2>
 
             {movie.tagline ? (
-              <p className="text-zinc-400">{movie.tagline}</p>
+              <p className="text-zinc-500 dark:text-zinc-400">{movie.tagline}</p>
             ) : null}
 
             <div className="flex flex-wrap gap-2">
@@ -92,9 +92,9 @@ export function MovieDetailsPage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
+            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-5">
               <h3 className="mb-3 font-medium text-white">Informações</h3>
-              <div className="space-y-2 text-sm text-zinc-400">
+              <div className="space-y-2 text-sm text-zinc-500 dark:text-zinc-400">
                 <p>Nota: {formatRating(movie.voteAverage)}</p>
                 <p>Lançamento: {formatYear(movie.releaseDate)}</p>
                 <p>Duração: {movie.runtime ? `${movie.runtime} min` : "N/A"}</p>
@@ -102,7 +102,7 @@ export function MovieDetailsPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
+            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-5">
               <h3 className="mb-3 font-medium text-white">Curadoria</h3>
               <div className="space-y-3">
                 <WatchlistToggleButton movie={movieForWatchlist} fullWidth />
@@ -113,12 +113,12 @@ export function MovieDetailsPage() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <div className="space-y-3 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+        <div className="space-y-3 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6">
           <h3 className="font-medium text-white">Elenco principal</h3>
           <ul className="space-y-2">
             {cast?.length ? (
               cast.map((person) => (
-                <li key={person.id} className="text-sm text-zinc-400">
+                <li key={person.id} className="text-sm text-zinc-500 dark:text-zinc-400">
                   {person.name} {person.character ? `— ${person.character}` : ""}
                 </li>
               ))
@@ -131,7 +131,7 @@ export function MovieDetailsPage() {
         </div>
 
         {trailer ? (
-          <div className="space-y-3 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+          <div className="space-y-3 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6">
             <h3 className="font-medium text-white">Trailer</h3>
             <div className="aspect-video overflow-hidden rounded-lg">
               <iframe

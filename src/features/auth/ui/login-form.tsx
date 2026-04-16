@@ -46,10 +46,10 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md border-zinc-800 bg-zinc-900 text-zinc-50 shadow-2xl">
+    <Card className="w-full max-w-md border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-50 shadow-2xl">
       <CardHeader>
         <CardTitle className="text-2xl">Entrar no CineDash</CardTitle>
-        <CardDescription className="text-zinc-400">
+        <CardDescription className="text-zinc-500 dark:text-zinc-400">
           Acesse o dashboard de curadoria de filmes.
         </CardDescription>
       </CardHeader>

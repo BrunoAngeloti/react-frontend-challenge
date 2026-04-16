@@ -14,10 +14,10 @@ export function SectionHeader({
   return (
     <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div className="space-y-1">
-        <h2 className="text-2xl font-semibold tracking-tight text-white">
+        <h2 className="text-2xl font-semibold tracking-tight dark:text-white text-zinc-900">
           {title}
         </h2>
-        {description && <p className="text-sm text-zinc-400">{description}</p>}
+        {description && <p className="text-sm text-zinc-500 dark:text-zinc-400">{description}</p>}
       </div>
 
       {actions ? <div>{actions}</div> : null}

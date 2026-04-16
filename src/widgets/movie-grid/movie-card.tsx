@@ -15,7 +15,7 @@ export function MovieCard({ movie, genres }: MovieCardProps) {
   const movieGenres = genres.filter((genre) => movie.genreIds.includes(genre.id));
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
+    <article className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
       <div className="aspect-[2/3] bg-zinc-800">
         {movie.posterPath ? (
           <img
@@ -35,7 +35,7 @@ export function MovieCard({ movie, genres }: MovieCardProps) {
           <h3 className="line-clamp-1 text-base font-semibold text-white">
             {movie.title}
           </h3>
-          <p className="mt-1 text-sm text-zinc-400">
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             {formatYear(movie.releaseDate)} • Nota {formatRating(movie.voteAverage)}
           </p>
         </div>
@@ -51,7 +51,7 @@ export function MovieCard({ movie, genres }: MovieCardProps) {
           ))}
         </div>
 
-        <p className="line-clamp-3 text-sm text-zinc-400">
+        <p className="line-clamp-3 text-sm text-zinc-500 dark:text-zinc-400">
           {movie.overview || "Sem sinopse disponível."}
         </p>
 

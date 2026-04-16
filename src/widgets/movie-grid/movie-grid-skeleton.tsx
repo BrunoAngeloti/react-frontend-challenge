@@ -4,7 +4,7 @@ export function MovieGridSkeleton() {
       {Array.from({ length: 8 }).map((_, index) => (
         <div
           key={index}
-          className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900"
+          className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900"
         >
           <div className="aspect-[2/3] animate-pulse bg-zinc-800" />
           <div className="space-y-3 p-4">
